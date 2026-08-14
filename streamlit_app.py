@@ -8,7 +8,7 @@ import pandas as pd
 load_dotenv()
 
 # Gemini client
-gemini_key = os.getenv("GEMINI_API_KEY")
+gemini_key = os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
 client = genai.Client(api_key=gemini_key)
 
 # Database schema
@@ -57,12 +57,12 @@ Rules:
             st.code(sql_query, language="sql")
 
             connection = mysql.connector.connect(
-             host=os.getenv("DB_HOST"),
-            port=os.getenv("DB_PORT"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            database=os.getenv("DB_NAME")
-            )
+            host=os.getenv("DB_HOST") or st.secrets.get("DB_HOST"),
+            port=os.getenv("DB_PORT") or st.secrets.get("DB_PORT"),
+            user=os.getenv("DB_USER") or st.secrets.get("DB_USER"),
+            password=os.getenv("DB_PASSWORD") or st.secrets.get("DB_PASSWORD"),
+            database=os.getenv("DB_NAME") or st.secrets.get("DB_NAME")
+       )
             cursor = connection.cursor()
             cursor.execute(sql_query)
             results = cursor.fetchall()
