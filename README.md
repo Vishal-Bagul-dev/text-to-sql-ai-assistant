@@ -1,5 +1,6 @@
 # 🤖 Text-to-SQL AI Assistant
 
+🔗 **[Live Demo](https://text-to-sql-ai-assistant-bfiymvscvasjlvty8pqj7v.streamlit.app/)**
 An AI-powered tool that converts plain English questions into SQL queries and fetches answers from a MySQL database in real-time — no SQL knowledge required to query the data.
 
 ## 🎯 Problem it Solves
